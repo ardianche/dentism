@@ -1,0 +1,72 @@
+@import './variables.scss';
+@import './global-css.css';
+
+html,body{
+    height: 100vh;
+    padding: 0;
+    background:var(--background-gradient);
+    font-family: 'GraublauWeb' !important;
+    margin: 0;
+}
+h1,h2,h3,h4,h5,h6{
+    padding: 0;
+    margin: 0;
+
+}
+
+html{
+    --background-gradient: linear-gradient(#fafafa,whitesmoke) !important;
+}
+
+#app{
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+i{
+    color:white !important;
+}
+
+i:hover{
+    transform:scale(1.09);
+    cursor:pointer;
+    color:black !important;
+}
+
+.icon-holder {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+    i{
+        color:white;
+    }
+}
+
+.application--wrap{
+    width:100%;
+}
+
+.hoverable:hover{
+    cursor: pointer;
+    transform:scale(1.009);
+}
+
+.registration-input{
+    min-width: 350px;
+}
+
+.v-dialog , .v-dialog--active, .v-dialog--persistent{
+    width:auto !important;
+    max-width: unset !important;
+}
+.headline{
+    justify-content: center;
+}
