@@ -1,17 +1,16 @@
 <template>
     <div class="mainpage-layout">
         <Custom-Header></Custom-Header>
-        <keep-alive>
-            <router-view/>
-        </keep-alive>
+        <About></About>
     </div>
 </template>
 <script>
-import Router from '@/router';
+import About from '@/views/About.vue';
 import CustomHeader from '@/components/common/CustomHeader.vue';
 export default {
     components:{
         CustomHeader,
+        About,
     },
     beforeMount(){
     },

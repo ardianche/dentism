@@ -11,7 +11,7 @@
               <template v-slot:activator>
                 <v-list-tile>
                   <v-list-tile-content>
-                    <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+                    <v-list-tile-title @click="goTo(item)">{{ item.title }}</v-list-tile-title>
                   </v-list-tile-content>
                 </v-list-tile>
               </template>
@@ -27,6 +27,12 @@
             </v-list-group>
           </v-list>
       </div>
+      <div class="content-center">
+         <keep-alive>
+            <router-view >
+            </router-view>
+        </keep-alive>
+      </div>
     </div>
   </div>
 </template>
@@ -41,6 +47,7 @@ export default {
                                         console.log('item : ',item);
                                         return {
                                             title : item.path.substr(1,item.path.length),
+                                            path : item.path,
                                             children : !!item.children &&  item.children.map(item => {
                                               return {
                                                 title : item.path.substr(1,item.path.length),
@@ -54,6 +61,12 @@ export default {
   data:()=>{
     return{
       routes : null,
+    }
+  },
+  methods:{
+    goTo(item){
+      console.log('item: ',item.path)
+      this.$router.push('main'+item.path)
     }
   }
 }
