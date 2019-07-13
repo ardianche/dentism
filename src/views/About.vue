@@ -29,15 +29,20 @@
       </div>
       <div class="content-center">
          <keep-alive>
-            <router-view >
-            </router-view>
+            <calendar v-if="activeMenu == 'calendar'"/>
         </keep-alive>
       </div>
     </div>
   </div>
 </template>
 <script>
+
+import Calendar from '@/views/main/Calendar.vue';
+
 export default {
+  components:{
+    Calendar,
+  },
   beforeMount(){
       this.routes = this.$router.options.routes
                                     .find(item => item.name == 'mainPage')
@@ -66,7 +71,13 @@ export default {
   methods:{
     goTo(item){
       console.log('item: ',item.path)
-      this.$router.push('main'+item.path)
+      // this.$router.go(item.path)
+      this.$store.commit('SET_ACTIVE_MENU',item.title);
+    }
+  },
+  computed:{
+    activeMenu(){
+      return this.$store.state.activeMenu;
     }
   }
 }
