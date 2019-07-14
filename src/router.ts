@@ -11,6 +11,8 @@ import Calendar from '@/views/main/Calendar.vue';
 import Invoices from '@/views/main/Invoices.vue';
 import Stats from '@/views/main/Stats.vue';
 import RegisterPatient from '@/views/main/submenus/RegisterPatient.vue';
+import ManageAppointments from '@/views/main/submenus/ManageAppointments.vue';
+import CreateAppointment from '@/views/main/submenus/CreateAppointment.vue';
 
 Vue.use(Router)
 
@@ -33,8 +35,23 @@ export default new Router({
           children:[
             {
               path:'/appointments',
-              name:'mainPageAppointments',
-              component:Appointments
+              components:{
+                default:Appointments,
+                  a:CreateAppointment,
+                  b:ManageAppointments,
+              },
+              children:[
+                {
+                  path:'/create-appointment',
+                  name:'mainPageAppointmentsCreate',
+                  component:CreateAppointment,
+                },
+                {
+                  path:'/manage-appointments',
+                  name:'mainPageAppointmentsManage',
+                  component:ManageAppointments
+                }
+              ]
             },
             {
               path:'/patients',
