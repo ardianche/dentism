@@ -57,7 +57,6 @@ export default {
         Popup,
     },
     mounted(){
-        console.log('slots : ',this.$slots);
     }, 
     data:()=>{
         return{

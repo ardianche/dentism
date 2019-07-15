@@ -98,7 +98,6 @@ export default {
     },
     methods:{
         doSomething(){
-            console.log('test');
         },
         viewDay({date}){
             this.focus = date;
