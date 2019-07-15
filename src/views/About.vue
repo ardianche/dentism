@@ -27,7 +27,7 @@
                  <v-list-tile
                     v-for="subItem in item.children"
                     :key="subItem.title"
-                    @click="$router.go('main/'+item.title+'/'+subItem.title)"
+                    @click="activateSubMenu(item.title,subItem.title)"
                   >
                     <v-list-tile-content>
                       <v-list-tile-title class="submenu" style="font-size:0.8em;" >{{ subItem.title }}</v-list-tile-title>
@@ -40,7 +40,7 @@
       <div class="content-center">
          <keep-alive>
             <calendar v-if="activeMenu == 'calendar'"/>
-            <!-- <appointments v-if="activeMenu == 'appointments' "/> -->
+            <appointments v-if="activeMenu == 'appointments' " :submenu="submenu"/>
         </keep-alive>
       </div>
     </div>
@@ -113,6 +113,10 @@ export default {
           name:'patients',
           icon:'account_circle'
         }
+      },
+      submenu:{
+        name:null,
+        sub:null,
       }
     }
   },
@@ -121,6 +125,12 @@ export default {
       console.log('item: ',item.path)
       // this.$router.go(item.path)
       this.$store.commit('SET_ACTIVE_MENU',item.title);
+    },
+    activateSubMenu(item,child){
+      console.log('item and child : ',item,child);
+      this.submenu.name = item;
+      this.submenu.sub = child;
+      this.$forceUpdate();
     }
   },
   computed:{
@@ -134,8 +144,11 @@ export default {
   .about-content-layout{
     padding:20px;
     height:100%;
+    height: calc(100% - 50px);
+    overflow-y: scroll;
       .content-boxes{
         height: 100%;
+            // overflow-y: scroll;
         border: 1px solid lightgray;
         border-radius: 4px;
         box-shadow: 0px 3px 6px 3px lightgrey;
@@ -143,11 +156,15 @@ export default {
         grid-template-columns: 260px 1fr;
         grid-column-gap: 20px;
         .content-sidebar{
+          overflow-y: scroll;
           .list{
             box-shadow: 8px 1px 20px 0px lightgrey;
             text-transform:capitalize;
             height:100%;
           }
+        }
+        .content-center{
+          overflow-y:scroll;
         }
       }
   }

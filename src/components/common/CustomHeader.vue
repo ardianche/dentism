@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="header-center">
-            <span>Dentism</span>
+            <span style="font-size:1.4em;font-weight:600;">Dentism</span>
         </div>
         <div class="header-right">
             <v-tooltip 
