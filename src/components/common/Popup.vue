@@ -38,6 +38,7 @@ export default {
         },
         confirm(){
             this.$emit('closeModal',true);
+            console.log('testttt');
         }
     }
 }

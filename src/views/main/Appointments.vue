@@ -1,8 +1,12 @@
 <template>
-    <Create-Appointment v-if="submenu.sub == 'create-appointment'"/>
+    <div>
+        <Create-Appointment v-if="submenu.sub == 'create-appointment'"/>
+        <manage-appointments v-if="submenu.sub == 'manage-appointments'" />
+    </div>
 </template>
 <script>
 import CreateAppointment from '@/views/main/submenus/CreateAppointment.vue';
+import ManageAppointments from '@/views/main/submenus/ManageAppointments.vue';
 export default {
     props:['submenu'],
     beforeMount(){
@@ -10,6 +14,7 @@ export default {
     },
     components:{
         CreateAppointment,
+        ManageAppointments
     },
     watch:{
         sub:function(newVal){

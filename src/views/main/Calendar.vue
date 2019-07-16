@@ -23,7 +23,6 @@
                     Next
                     <v-icon
                     center
-
                     >
                     keyboard_arrow_right
                     </v-icon>
@@ -41,7 +40,7 @@
                 @click:more="viewDay"
                 @click:date="viewDay"
               >
-        <template v-slot:day="{ present, past, date }" @mouseenter="console.log('test')">
+        <template v-slot:day="{ present, past, date }">
             <v-layout
             >
               <template v-if="past && tracked[date]">

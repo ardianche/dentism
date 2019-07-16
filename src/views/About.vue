@@ -41,6 +41,7 @@
          <keep-alive>
             <calendar v-if="activeMenu == 'calendar'"/>
             <appointments v-if="activeMenu == 'appointments' " :submenu="submenu"/>
+            <patients v-if="activeMenu == 'patients'" :submenu="submenu"></patients>
         </keep-alive>
       </div>
     </div>
@@ -50,10 +51,12 @@
 
 import Calendar from '@/views/main/Calendar.vue';
 import Appointments from '@/views/main/Appointments.vue';
+import Patients from '@/views/main/Patients.vue';
 export default {
   components:{
     Calendar,
     Appointments,
+    Patients
   },
   beforeMount(){
       this.routes = this.$router.options.routes
