@@ -1,26 +1,25 @@
 <template>
     <v-layout style="display:flex;flex-direction:column;">
-            <div style="display:flex;justify-content:space-between;">
+            <div style="display:flex;justify-content:space-between;padding:20px;">
                 <v-flex
                 sm4
                 xs12
                 class="text-sm-left text-xs-center"
                 >
-                <v-btn @click="$refs.calendar.prev()" dark>
+                <v-btn @click="$refs.calendar.prev()" >
                     <v-icon
                     center
                     >
                     keyboard_arrow_left
                     </v-icon>
-                    Prev
+                    
                 </v-btn>
                 </v-flex>
             <v-subheader>
-                    Your calendar
+                    Your appointments
                 </v-subheader>
             <v-flex sm4 xs12 class="text-sm-right text-xs-center">
-                <v-btn @click="$refs.calendar.next()" dark>
-                    Next
+                <v-btn @click="$refs.calendar.next()">
                     <v-icon
                     center
                     >
@@ -61,6 +60,7 @@
     </v-layout>
 </template>
 <script>
+import {format} from 'date-fns/format';
 export default {
     mounted(){
         window.scrollBy(0,210);
@@ -69,7 +69,7 @@ export default {
         return { 
             today:new Date(),
             selectedOpen:false,
-             type: 'month',
+             type: 'week',
             focus: new Date(),
             typeOptions: [
                 { text: 'Day', value: 'day' },
@@ -100,7 +100,7 @@ export default {
         },
         viewDay({date}){
             this.focus = date;
-            this.type = 'day';
+            this.type = this.type == 'day' ? 'week' : 'day';
         }
     }
 }
